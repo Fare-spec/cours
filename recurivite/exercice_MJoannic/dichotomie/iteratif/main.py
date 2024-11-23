@@ -1,21 +1,4 @@
-def sort_list(liste: list) -> list:
-    """this function sort a liste
-
-    Args:
-        liste (list): the list to sort
-
-    Returns:
-        list: the list sorted
-    """
-    for i in range(len(liste)):
-        min_index = i
-        for j in range(i + 1, len(liste)):
-            if liste[j] < liste[min_index]:
-                min_index = j
-        liste[i], liste[min_index] = liste[min_index], liste[i]
-
-    return liste
-
+from sort_list import sort_list
 
 def dichotomie(liste: list, element: any,bypass_sorting = False)->bool:
     """This function return return True if element is in liste False else
@@ -23,7 +6,7 @@ def dichotomie(liste: list, element: any,bypass_sorting = False)->bool:
     Args:
         liste (list): the array to examinate
         element (any): the element to find into liste
-
+        bypass_sorting (bool, optional):If True, skips sorting the list. Defaults to False.
     Returns:
         bool: True if present False else
     """
