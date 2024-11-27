@@ -12,7 +12,8 @@ precondition: |liste| > 0
 # Preuve de terminaison
 La terminaison est assuré par la présence d'un variant de boucle (séquence d'entier naturel). *ici* 
 ```plaintext
-|liste| - index ```
+|liste| - index 
+```
 est un variant de boucles
 
 
