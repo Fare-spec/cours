@@ -1,18 +1,28 @@
+from random import shuffle
+i = 0
+def fusion(liste_1,liste_2):
+    global i
+    if len(liste_1) == 0:
+        return liste_2
+    if len(liste_2) == 0:
+        return liste_1
+    if liste_1[0] <= liste_2[0]:
+        i+=1
+        return [liste_1[0]] + fusion(liste_1[1:],liste_2)
+    i+=1
+    return [liste_2[0]] + fusion(liste_1,liste_2[1:])
 
-def fusion_rec(a, b):
-    if len(a) == 0:
-        return b
-    if len(b) == 0:
-        return a
-    if a[0] <= b[0]:
-        return [a[0]] + fusion_rec(a[1:], b)
-    return [b[0]] + fusion_rec(a, b[1:])
-
-def tri(liste):
-    if len(liste) <= 1:
+def tri_pf(liste):
+    global i
+    if len(liste)<=1:
         return liste
-    liste1 = liste[:len(liste) // 2]
-    liste2 = liste[len(liste) // 2:]
-    liste1 = tri(liste1)
-    liste2 = tri(liste2)
-    return fusion(liste1, liste2)
+    i+=1
+    millieu = len(liste)//2
+    return fusion(tri_pf(liste[:millieu]), tri_pf(liste[millieu:]))
+
+
+
+test = [23,8,20,10,13,1]
+print(test,i)
+test = tri_pf(test)
+print(test, i )
