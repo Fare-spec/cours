@@ -26,6 +26,6 @@ class leaudibidon(object):
         b5.quantity, b3.quantity = b5.quantity - transfer_amount, b3.quantity + transfer_amount
     
     
-    def transfer_b5_b3(b5,b3):
+    def transfer_b3_b5(b5,b3):
         transfer_amount = min(b3.quantity, b5.capacity - b5.quantity)
         b5.quantity, b3.quantity = b5.quantity + transfer_amount, b3.quantity - transfer_amount
