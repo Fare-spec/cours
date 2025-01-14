@@ -132,8 +132,11 @@ def transvaser(source, destination, etat, capacites):
 	:effet de bord: aucun
 	"""
 	transfer_amount = min(list(etat)[source], list(capacites)[destination] - list(etat)[destination])
-	return (list(etat)[source] - transfer_amount, list(etat)[destination] + transfer_amount)
+	new_state = list(etat)
 
+	new_state[source] -= transfer_amount
+	new_state[destination] += transfer_amount
+	return tuple(new_state)
 # FONCTION LIEES AU GRAPHE DU WATER_JUG
 
 # Pour construire les etats
@@ -149,7 +152,16 @@ def produit_cartesien(*listes):
 	>>> produit_cartesien([(1,2), (3, 4)], [(5, 6), (7, 8,)])
 	[(1, 2, 5, 6), (1, 2, 7, 8), (3, 4, 5, 6), (3, 4, 7, 8)]
 	"""
-	pass
+	if listes == 0:
+		return []
+	result = [()]
+	for liste in listes:
+		new_result = []
+		for tuples in result:
+			for elt in liste:
+				new_result.append(elt + tuples)
+		result = new_result
+	return result
 
 def creer_water_jug(*capacites):
 	"""
