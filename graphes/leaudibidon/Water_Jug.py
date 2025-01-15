@@ -66,8 +66,12 @@ def construire_chemins(graphe, depart):
 
 	:effet de bord: Aucun
 	"""
-	resultat = dict()
-	return resultat
+	result = {
+		depart: (0,None)
+	}# distance 0 et aucun truc avant
+	queue = [depart]
+
+
 
 def reconstruire_chemin_vers(dico_chemins, *arrivee):
 	"""
@@ -152,15 +156,14 @@ def produit_cartesien(*listes):
 	>>> produit_cartesien([(1,2), (3, 4)], [(5, 6), (7, 8,)])
 	[(1, 2, 5, 6), (1, 2, 7, 8), (3, 4, 5, 6), (3, 4, 7, 8)]
 	"""
-	if listes == 0:
+	if listes == None:
 		return []
-	result = [()]
-	for liste in listes:
-		new_result = []
-		for tuples in result:
-			for elt in liste:
-				new_result.append(elt + tuples)
-		result = new_result
+	if len(listes) == 1:
+		return listes[0]
+	result = []
+	for elt in listes[0]:
+		for tuples in produit_cartesien(*listes[1:]):
+			result.append(elt + tuples)
 	return result
 
 def creer_water_jug(*capacites):
