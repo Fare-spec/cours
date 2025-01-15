@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 # -*- Coding: utf-8 -*-
 
+from typing import Deque
+
+
 class Graphe_Oriente(object):
 	"""
 	Classe des Graphes Orientés (GO).
@@ -66,11 +69,16 @@ def construire_chemins(graphe, depart):
 
 	:effet de bord: Aucun
 	"""
-	result = {
-		depart: (0,None)
-	}# distance 0 et aucun truc avant
-	queue = [depart]
+	visited = set()
+	queue = Deque([depart])
+	visited.add(depart)
+	while queue:
+		vertex = queue.popleft()
 
+		for neighbor in graphe[vertex]:
+			if neighbor not in visited:
+				visited.add(neighbor)
+				queue.append(neighbor)
 
 
 def reconstruire_chemin_vers(dico_chemins, *arrivee):
@@ -83,7 +91,7 @@ def reconstruire_chemin_vers(dico_chemins, *arrivee):
 		(si vide, on considère tous les sommets)
 	:return resultat list: liste des chemins ie des listes de sommets traversés
 	"""
-	pass
+	
 
 def affichage_chemin(chemin):
 	"""
