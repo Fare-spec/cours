@@ -69,16 +69,19 @@ def construire_chemins(graphe, depart):
 
 	:effet de bord: Aucun
 	"""
-	visited = set()
-	queue = Deque([depart])
-	visited.add(depart)
-	while queue:
-		vertex = queue.popleft()
+	resultat = dict()
+	file = [depart]
+	resultat[depart] = (0,None) # Ajout du départ qui n'a aucun predecesseur
+	while len(file) == 0:
+		sommet = file.pop(0)
+		for voisin in graphe.voisins[sommet]:
+			if voisin not in resultat:
+				distance = resultat[sommet][0] + 1 # resultat[sommet][0] donne la distance a partir du sommet donner et +1 pour l sommet d'après
+				resultat[voisin] = (distance,sommet)
+				file.append(voisin)
 
-		for neighbor in graphe[vertex]:
-			if neighbor not in visited:
-				visited.add(neighbor)
-				queue.append(neighbor)
+	return resultat
+
 
 
 def reconstruire_chemin_vers(dico_chemins, *arrivee):
@@ -91,7 +94,14 @@ def reconstruire_chemin_vers(dico_chemins, *arrivee):
 		(si vide, on considère tous les sommets)
 	:return resultat list: liste des chemins ie des listes de sommets traversés
 	"""
-	
+	chemins = list()
+	cibles = [arrivee]
+	if not cibles:
+		return dico_chemins.keys()
+	for sommet in cibles:
+		sommet
+	#todo
+	return []
 
 def affichage_chemin(chemin):
 	"""
@@ -123,6 +133,7 @@ def remplir(numero, etat, capacites):
 
 	:param numero INT: index du bidon
 	:param etat tuple: etat des bidons avant l'opération
+	:param capacites tuple: capacités des bidons
 	:return tuple: nouvel etat aprés opération
 	:effet de bord: aucun
 	"""
@@ -159,7 +170,7 @@ def produit_cartesien(*listes):
 	:param *listes: un nombre quelconque de listes de tuples
 	:return list: une liste des tuples concaténés
 
-	Exemple :
+	Exemple
 	--------
 	>>> produit_cartesien([(1,2), (3, 4)], [(5, 6), (7, 8,)])
 	[(1, 2, 5, 6), (1, 2, 7, 8), (3, 4, 5, 6), (3, 4, 7, 8)]
@@ -185,6 +196,7 @@ def creer_water_jug(*capacites):
 	:effet de bord: Aucun
 	"""
 	nb_bidons = len(capacites)
+	print(len(capacites))
 	assert nb_bidons >= 2, "Pas assez de bidons"
 	resultat = Graphe_Oriente()
 	# CREATION DES SOMMETS
@@ -253,7 +265,13 @@ def atteindre(quantite, graphe_water_jug, depart = None, plus_court=False):
 	return [element for element in resultat if element[1]==mini]
 
 def main():
-	pass
+	for sommet in graphe.sommet:
+	
+
+
+
+
+	affichage_chemin(list(creer_water_jug(3,5)))
 
 if __name__ == "__main__":
 	main()
