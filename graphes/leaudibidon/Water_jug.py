@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 # -*- Coding: utf-8 -*-
 
-from typing import Deque
 
 
 class Graphe_Oriente(object):
@@ -99,12 +98,12 @@ def reconstruire_chemin_vers(dico_chemins, *arrivee):
 	if len(cibles) == 0:
 		return list(dico_chemins.keys())
 	for sommet in cibles:
-		b = []
-		a = sommet
-		while a is not None:
-			b.insert(0, a)
-			a = dico_chemins[a][1]
-		chemins.append(b)
+		sous_chemin = []
+		current = sommet
+		while current is not None:
+			sous_chemin.insert(0, current)
+			current = dico_chemins[current][1]
+		chemins.append(sous_chemin)
 	return chemins
 
 
@@ -262,12 +261,12 @@ def atteindre(quantite, graphe_water_jug, depart=None, plus_court=False):
 	"""
 	if depart is None:
 		nb_bidons = len(graphe_water_jug.sommets[0])
-		depart = tuple([0 for i in range(nb_bidons)])
+		depart = tuple([0 for _ in range(nb_bidons)])
 	chemins = construire_chemins(graphe_water_jug, depart)
 	resultat = list()
 	for sommet in chemins:
 		if quantite in sommet:
-			longueur, predecesseur = chemins[sommet]
+			longueur, _ = chemins[sommet]
 			chemin = reconstruire_chemin_vers(chemins, sommet).pop()
 			index = len(resultat)
 			resultat.append((sommet, longueur, chemin))
