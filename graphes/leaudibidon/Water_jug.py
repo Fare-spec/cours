@@ -68,6 +68,14 @@ def construire_chemins(graphe, depart):
 			- valeur : tuple (longueur itinéraire, sommet prédécesseur)
 
 	:effet de bord: Aucun
+	>>> graphe = Graphe_Oriente()
+	>>> graphe.ajoute_sommet('A')
+	>>> graphe.ajoute_sommet('B')
+	>>> graphe.ajoute_sommet('C')
+	>>> graphe.ajoute_arc('A', 'B')
+	>>> graphe.ajoute_arc('B', 'C')
+	>>> construire_chemins(graphe, 'A')
+	{'A': (0, None), 'B': (1, 'A'), 'C': (2, 'B')}
 	"""
 	resultat = dict()
 	file = [depart] # initialise une file (sous forme de liste ici)
@@ -92,6 +100,9 @@ def reconstruire_chemin_vers(dico_chemins, *arrivee):
 	:param *arrivee: nombre quelconque de sommet à atteindre
 			(si vide, on considère tous les sommets)
 	:return resultat list: liste des chemins ie des listes de sommets traversés
+	>>> dico_chemins = {'A': (0, None), 'B': (1, 'A'), 'C': (2, 'B')}
+	>>> reconstruire_chemin_vers(dico_chemins, 'C')
+	[['A', 'B', 'C']]
 	"""
 	chemins = list()
 	cibles = arrivee # Creer une liste avec les sommets a remonter 
@@ -131,6 +142,8 @@ def vider(numero, etat):
 	:param etat tuple: etat des bidons avant l'opération
 	:return tuple: nouvel etat aprés opération
 	:effet de bord: aucun
+	>>> vider(1,(3,5,2))
+	(3, 0, 2)
 	"""
 	index_b = list(etat)
 	index_b[numero] = 0
@@ -146,6 +159,9 @@ def remplir(numero, etat, capacites):
 	:param capacites tuple: capacités des bidons
 	:return tuple: nouvel etat aprés opération
 	:effet de bord: aucun
+
+	>>> remplir(1, (3, 2, 1), (5, 4, 3))
+	(3, 4, 1)
 	"""
 	cap = list(capacites)
 	index_b = list(etat)
@@ -163,6 +179,8 @@ def transvaser(source, destination, etat, capacites):
 	:param capacites tuple: capacités des bidons
 	:return tuple: nouvel etat aprés opération
 	:effet de bord: aucun
+	>>> transvaser(0, 1, (3, 2, 1), (5, 4, 3))
+	(1, 4, 1)
 	"""
 	transfer_amount = min(
 		list(etat)[source], list(capacites)[destination] - list(etat)[destination]
@@ -295,4 +313,6 @@ def main():
 
 
 if __name__ == "__main__":
+	import doctest
+	doctest.testmod(verbose=True)
 	main()
