@@ -70,15 +70,15 @@ def construire_chemins(graphe, depart):
 	:effet de bord: Aucun
 	"""
 	resultat = dict()
-	file = [depart]
-	resultat[depart] = (0, None)
+	file = [depart] # initialise une file (sous forme de liste ici)
+	resultat[depart] = (0, None) # None car le depart n'a aucun predesseceur
 	while len(file) > 0:
-		sommet = file.pop(0)
-		for voisin in graphe.voisins[sommet]:
-			if voisin not in resultat:
-				distance = resultat[sommet][0] + 1
-				resultat[voisin] = (distance, sommet)
-				file.append(voisin)
+		sommet = file.pop(0) # retire le premier element de la file -> FIFO
+		for voisin in graphe.voisins[sommet]: # Parcours tous les voisins du sommet
+			if voisin not in resultat: # Verifie que cette partie de l arbre (ou du graphe) n a pas deja ete explorer
+				distance = resultat[sommet][0] + 1 # Definie distance -> Distance du dernier sommet + 1
+				resultat[voisin] = (distance, sommet) # Insere le nouveau sommet dans le dictionnaire
+				file.append(voisin) # Permet la reiteration de la boucle a partir de se sommet
 
 	return resultat
 
@@ -94,15 +94,15 @@ def reconstruire_chemin_vers(dico_chemins, *arrivee):
 	:return resultat list: liste des chemins ie des listes de sommets traversés
 	"""
 	chemins = list()
-	cibles = arrivee
+	cibles = arrivee # Creer une liste avec les sommets a remonter 
 	if len(cibles) == 0:
-		return list(dico_chemins.keys())
+		return list(dico_chemins.keys()) # si la liste est vide, on renvoie les chemins (sans leurs attributs)
 	for sommet in cibles:
 		sous_chemin = []
 		current = sommet
 		while current is not None:
-			sous_chemin.insert(0, current)
-			current = dico_chemins[current][1]
+			sous_chemin.insert(0, current) # on insere le sommet au début de la liste (permet de maintenir l ordre)
+			current = dico_chemins[current][1] # on change current avec le sommet predesseceur pour que la boucle continue
 		chemins.append(sous_chemin)
 	return chemins
 
