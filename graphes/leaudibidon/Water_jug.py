@@ -309,7 +309,7 @@ def main():
 	for (sommet_final, nb_etapes, chemin) in solutions:
 		print(f"sommet atteint: {sommet_final}, en {nb_etapes} etapes")
 		print(affichage_chemin(chemin))
-		print("-----------------------------------------")
+		print("--------------------------------------")
 
 
 if __name__ == "__main__":
