@@ -14,9 +14,14 @@ class Labyrinth:
 
     def __str__(self) -> str:
         return "\n".join("".join(" " if cell == 0 else "#" for cell in row) for row in self.grid)
+
     def set_start_end(self, start, end):
         self.start = start
         self.end = end
+
     def generate_maze(self):
+        
+
+    def solve(self):
         pass
 
