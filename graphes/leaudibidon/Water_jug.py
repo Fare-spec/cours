@@ -311,8 +311,36 @@ def main():
 		print(affichage_chemin(chemin))
 		print("--------------------------------------")
 
+def question1():
+
+	print("Non pas tous les quantités de litres peuvent être représenter comme 6l.")
+def question2():
+	for i in range(10):
+		resolutions = atteindre(i,creer_water_jug(3,5),None, True)
+		for (sommet_final, nb_etapes, chemin) in resolutions:
+			print(f"sommet atteint: {sommet_final}, en {nb_etapes} etapes")
+			print(affichage_chemin(chemin))
+			print("--------------------------------------")
+def question3():
+	solution = atteindre(4,creer_water_jug(3,5),None,True)
+	for (sommet_final, nb_etapes, chemin) in solution:
+		print(f"sommet atteint: {sommet_final}, en {nb_etapes} etapes")
+		print(affichage_chemin(chemin))
+		print("--------------------------------------")
+
+def question4():
+	solution = atteindre(1,creer_water_jug(3,5,9),None,True)
+	for (sommet_final, nb_etapes, chemin) in solution:
+		print(f"sommet atteint: {sommet_final}, en {nb_etapes} etapes")
+		print(affichage_chemin(chemin))
+		print("--------------------------------------")
+
 
 if __name__ == "__main__":
 	import doctest
 	doctest.testmod(verbose=True)
 	main()
+	question1()
+	question2()
+	question3()
+	question4()

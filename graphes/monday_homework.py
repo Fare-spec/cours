@@ -1,13 +1,13 @@
 def construire_bfs(graphe: dict, origine: str) -> dict:
     """
-    Construit un arbre BFS (Breadth-First Search) à partir d'un graphe donné et d'un sommet d'origine.
+    Construit un arbre BFS à partir de graphe et d'un sommet d'origine.
 
     Args:
         graphe (dict): Un dictionnaire représentant le graphe, où les clés sont les sommets et les valeurs sont des listes de sommets adjacents.
         origine (str): Le sommet de départ pour la recherche en largeur.
 
     Returns:
-        dict: Un dictionnaire représentant l'arbre BFS, où les clés sont les sommets et les valeurs sont des tuples contenant la distance depuis l'origine et le parent du sommet dans l'arbre BFS.
+        dict: Un dictionnaire représentant l'arbre BFS, où les clés sont les sommets et les valeurs sont des tuples contenant la distance depuis l'origine et le sommet precédent.
 
     Examples:
         >>> graphe = {
@@ -52,14 +52,14 @@ def construire_bfs(graphe: dict, origine: str) -> dict:
 
 def construire_dfs(graphe: dict, origine: str) -> dict:
     """
-    Construit un arbre DFS (Depth-First Search) à partir d'un graphe donné et d'un sommet d'origine.
+    Construit un arbre DFS à partir de graphe et d'un sommet d'origine.
 
     Args:
         graphe (dict): Un dictionnaire représentant le graphe, où les clés sont les sommets et les valeurs sont des listes de sommets adjacents.
         origine (str): Le sommet de départ pour la recherche en profondeur.
 
     Returns:
-        dict: Un dictionnaire représentant l'arbre DFS, où les clés sont les sommets et les valeurs sont des tuples contenant la distance depuis l'origine et le parent du sommet dans l'arbre DFS.
+        dict: Un dictionnaire représentant l'arbre DFS.
 
     Examples:
         >>> graphe = {
