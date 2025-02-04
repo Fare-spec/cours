@@ -1,7 +1,7 @@
 import maze_creator as mc
-import random
 
 
-random.seed(random.randint(-2147483647, 2147483647))
-lab = mc.Labyrinth(100,100)
+lab = mc.Labyrinth(10,10)
 lab.set_start_end((0,0),(100,100))
+lab.generate_maze()
+print(lab.__str__())
