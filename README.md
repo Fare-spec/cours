@@ -10,6 +10,8 @@
 ├── algo2.md
 ├── casse-brique
 │   └── main.py
+├── Dijkstra
+│   └── algo.py
 ├── ensembles_dynamiques
 │   └── TP
 │       ├── _collection_list.py
@@ -29,10 +31,13 @@
 │           └── main.rs
 ├── fichier.md
 ├── file
-│   ├── file_LSC.py
-│   ├── file.py
-│   ├── file_tuple.py
-│   └── LSC.py
+│   ├── new
+│   │   └── fifo.py
+│   └── old
+│       ├── file_LSC.py
+│       ├── file.py
+│       ├── file_tuple.py
+│       └── LSC.py
 ├── fonctions_tri
 │   └── partitionement.py
 ├── graphes
@@ -188,7 +193,7 @@
         ├── TP 5 Listes Chaînées-20240925.zip
         └── TP5_Listes_Chainees.pdf
 
-46 directories, 135 files
+49 directories, 137 files
 </pre>
 </body>
 </html>
