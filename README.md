@@ -109,7 +109,6 @@
 │           ├── constantes.py
 │           └── raquette.py
 ├── readme_creator.txt
-├── README.html
 ├── README.md
 ├── recursivite
 │   ├── exercice_MJoannic
@@ -145,50 +144,51 @@
 │   ├── exercice4.py
 │   ├── exercice5.py
 │   └── exercice6.py
-├── tp6
-│   ├── LSC.py
-│   ├── npi.py
-│   ├── Pile_List.py
-│   ├── Pile_LSC.py
-│   ├── Pile_Tuple.py
-│   ├── README.md
-│   ├── test.py
-│   └── TP_Piles.pdf
-├── TP6
-│   ├── LSC.py
-│   ├── Pile_List.py
-│   ├── Pile_LSC.py
-│   ├── Pile_Tuple.py
-│   ├── test_2.py
-│   │   ├── modules.rst
-│   │   ├── Pile_List.rst
-│   │   ├── Pile_Tuple.rst
-│   │   └── test.rst
-│   ├── test.py
-│   ├── test.py.patch
-│   └── TP_Piles.pdf
-├── tp6_self
-│   ├── LSC.py
-│   ├── npi.py
-│   ├── Pile_List.py
-│   ├── Pile_LSC.py
-│   ├── Pile_Tuple.py
-│   ├── README.md
-│   └── test.py
-└── tp_listes_chaines
-    ├── execute.py
-    ├── fichiers
-    │   ├── Chartreuse.csv
-    │   ├── factorial.py
+└── tp6_enirely
+    ├── tp6
     │   ├── LSC.py
-    │   ├── Sommets.py
+    │   ├── npi.py
+    │   ├── Pile_List.py
+    │   ├── Pile_LSC.py
+    │   ├── Pile_Tuple.py
+    │   ├── README.md
     │   ├── test.py
-    │   ├── TP5_1.py
-    │   └── TP5.py
-    ├── TP 5 Listes Chaînées-20240925.zip
-    └── TP5_Listes_Chainees.pdf
+    │   └── TP_Piles.pdf
+    ├── TP6
+    │   ├── LSC.py
+    │   ├── Pile_List.py
+    │   ├── Pile_LSC.py
+    │   ├── Pile_Tuple.py
+    │   ├── test_2.py
+    │   │   ├── modules.rst
+    │   │   ├── Pile_List.rst
+    │   │   ├── Pile_Tuple.rst
+    │   │   └── test.rst
+    │   ├── test.py
+    │   ├── test.py.patch
+    │   └── TP_Piles.pdf
+    ├── tp6_self
+    │   ├── LSC.py
+    │   ├── npi.py
+    │   ├── Pile_List.py
+    │   ├── Pile_LSC.py
+    │   ├── Pile_Tuple.py
+    │   ├── README.md
+    │   └── test.py
+    └── tp_listes_chaines
+        ├── execute.py
+        ├── fichiers
+        │   ├── Chartreuse.csv
+        │   ├── factorial.py
+        │   ├── LSC.py
+        │   ├── Sommets.py
+        │   ├── test.py
+        │   ├── TP5_1.py
+        │   └── TP5.py
+        ├── TP 5 Listes Chaînées-20240925.zip
+        └── TP5_Listes_Chainees.pdf
 
-45 directories, 136 files
+46 directories, 135 files
 </pre>
 </body>
 </html>
