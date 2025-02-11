@@ -17,6 +17,12 @@ def taille(liste):
         a+=1
     return a
 
+def divise2(liste):
+    n = taille(liste)
+    droite, gauche = partition(liste,0,n//2)
+    return droite,gauche
+
+
 
 def renverser(liste):
     result = fifo.creer_liste()
