@@ -10,6 +10,14 @@ Created on Mon Feb 10 09:15:57 2025
 import liste as fifo
 
 
+def taille(liste):
+    a = 0
+    while not(fifo.est_vide(liste)):
+        liste = fifo.queue(liste)
+        a+=1
+    return a
+
+
 def renverser(liste):
     result = fifo.creer_liste()
     while not fifo.est_vide(liste):
@@ -51,10 +59,10 @@ def fusion(gauche,droite):
     else:
         return fifo.ajouter(fusion(gauche,fifo.queue(droite)),fifo.tete(droite))
 
-
 liste_initiale = fifo.creer_liste()
 for i in reversed(range(10)):
     liste_initiale = fifo.ajouter(liste_initiale, i)
 gauche, droite = partition(liste_initiale,3 ,7)
 print(gauche, droite)
+print(taille(liste_initiale))
 
