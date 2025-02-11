@@ -65,10 +65,22 @@ def fusion(gauche,droite):
     else:
         return fifo.ajouter(fusion(gauche,fifo.queue(droite)),fifo.tete(droite))
 
-liste_initiale = fifo.creer_liste()
-for i in reversed(range(10)):
-    liste_initiale = fifo.ajouter(liste_initiale, i)
-gauche, droite = partition(liste_initiale,3 ,7)
-print(gauche, droite)
-print(taille(liste_initiale))
+
+
+def merge_sort(liste):
+
+    if fifo.est_vide(liste):
+        return liste
+    elif fifo.est_vide(fifo.queue(liste)):
+        return liste # si elle ne contient que un elt
+    gauche, droite = divise2(liste)
+
+
+    tri1 = merge_sort(gauche) # recursif
+    tri2 = merge_sort(droite) # recursif
+
+    return fusion(tri1,tri2)
+
+
+
 
