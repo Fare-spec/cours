@@ -10,19 +10,35 @@ Created on Mon Feb 10 09:15:57 2025
 import liste as fifo
 
 
+def renverser(liste):
+    result = fifo.creer_liste()
+    while not fifo.est_vide(liste):
+        result = fifo.ajouter(result, fifo.tete(liste))
+        liste = fifo.queue(liste)
+    return result
+
+
 def partition(liste, debut, fin):
-    liste1 = liste
-    liste2 = liste
     if fifo.est_vide(liste):
-        return (fifo.creer_liste(), fifo.creer_liste())
-    else:
-        left_liste = fifo.creer_liste()
-        for _ in range(int((debut + fin )/2)):
-            liste1 = fifo.tete(liste1)
-        for _ in range(debut,fin):
-            left_liste = fifo.ajouter(left_liste, fifo.queue(liste2))
-    return liste1, left_liste
+        return fifo.creer_liste(), fifo.creer_liste()
+
+    current = liste
+    for _ in range(debut):
+        if fifo.est_vide(current):
+            break
+        current = fifo.queue(current)
     
+    segment_inversé = fifo.creer_liste()
+    for _ in range(fin - debut):
+        if fifo.est_vide(current):
+            break
+        segment_inversé = fifo.ajouter(segment_inversé, fifo.tete(current))
+        current = fifo.queue(current)
+    
+    segment = renverser(segment_inversé)
+
+    return current, segment
+
 
 def fusion(tab, debut, milieu, fin):
     gauche = tab[debut:milieu + 1]
@@ -55,14 +71,13 @@ def tri_fusion_partition(tab, debut, fin):
         tri_fusion_partition(tab, pivot_index + 1, fin)
         fusion(tab, debut, pivot_index, fin)
 
-liste = fifo.creer_liste()
-for i in range(10):
-    liste = (liste, i)
-print(liste)
 
-liste = fifo.queue(liste)
-print(liste)
+liste_test = fifo.creer_liste()
+for i in range(1,10):
+    liste_test = fifo.ajouter(liste_test,i)
+print(liste_test)
 
-
+test = partition(liste_test,1,9)
 
 
+print(test)

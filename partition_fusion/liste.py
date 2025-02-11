@@ -20,10 +20,10 @@ def ajouter(liste,element):
 
 def tete(liste):
     assert not(est_vide(liste)), "Liste vide"
-    element, reste = liste
+    element, _ = liste
     return element
 
 def queue(liste):
     assert not(est_vide(liste)), "Liste vide"
-    element,reste = liste
+    _,reste = liste
     return reste
