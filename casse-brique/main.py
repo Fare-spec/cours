@@ -6,8 +6,8 @@ import random
 pygame.init()
 
 # Définition des dimensions de la fenêtre
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
+SCREEN_WIDTH = 1080
+SCREEN_HEIGHT = 720
 
 # Définition des couleurs (R, G, B)
 BLACK = (0, 0, 0)
@@ -31,8 +31,8 @@ ball_radius = 10
 ball_x = SCREEN_WIDTH / 2
 ball_y = SCREEN_HEIGHT / 2
 # La balle part dans une direction aléatoire horizontalement
-ball_speed_x = 4 * random.choice([-1, 1])
-ball_speed_y = -4
+ball_speed_x = 9 * random.choice([-1, 1])
+ball_speed_y = -9
 
 # Paramètres des briques
 BRICK_ROWS = 5       # nombre de lignes de briques
@@ -56,7 +56,7 @@ for row in range(BRICK_ROWS):
 
 # Horloge pour contrôler le taux de rafraîchissement (FPS)
 clock = pygame.time.Clock()
-FPS = 60
+FPS = 100
 
 # Boucle principale du jeu
 running = True
