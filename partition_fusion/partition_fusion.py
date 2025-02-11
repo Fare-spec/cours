@@ -40,44 +40,21 @@ def partition(liste, debut, fin):
     return current, segment
 
 
-def fusion(tab, debut, milieu, fin):
-    gauche = tab[debut:milieu + 1]
-    droite = tab[milieu + 1:fin + 1]
-    i, j, k = 0, 0, debut
+def fusion(gauche,droite):
+    if fifo.est_vide(gauche):
+        return droite
+    if fifo.est_vide(droite):
+        return gauche
 
-    while i < len(gauche) and j < len(droite):
-        if gauche[i] <= droite[j]:
-            tab[k] = gauche[i]
-            i += 1
-        else:
-            tab[k] = droite[j]
-            j += 1
-        k += 1
-
-    while i < len(gauche):
-        tab[k] = gauche[i]
-        i += 1
-        k += 1
-
-    while j < len(droite):
-        tab[k] = droite[j]
-        j += 1
-        k += 1
-
-def tri_fusion_partition(tab, debut, fin):
-    if debut < fin:
-        pivot_index = partition(tab, debut, fin)
-        tri_fusion_partition(tab, debut, pivot_index - 1)
-        tri_fusion_partition(tab, pivot_index + 1, fin)
-        fusion(tab, debut, pivot_index, fin)
+    if fifo.tete(gauche)<=fifo.tete(droite):
+        return fifo.ajouter(fusion(fifo.queue(gauche),droite),fifo.tete(gauche))
+    else:
+        return fifo.ajouter(fusion(gauche,fifo.queue(droite)),fifo.tete(droite))
 
 
-liste_test = fifo.creer_liste()
-for i in range(1,10):
-    liste_test = fifo.ajouter(liste_test,i)
-print(liste_test)
+liste_initiale = fifo.creer_liste()
+for i in reversed(range(10)):
+    liste_initiale = fifo.ajouter(liste_initiale, i)
+gauche, droite = partition(liste_initiale,3 ,7)
+print(gauche, droite)
 
-test = partition(liste_test,1,9)
-
-
-print(test)
