@@ -81,6 +81,12 @@ def merge_sort(liste):
 
     return fusion(tri1,tri2)
 
+if __name__ == "__main__":
+    liste = fifo.creer_liste()
+    for i in reversed(range(100)):
+        fifo.ajouter(liste,i)
+    print(liste)
 
+    print("Après avoir trié la liste:")
 
-
+    print(merge_sort(liste))
