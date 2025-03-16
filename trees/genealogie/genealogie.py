@@ -25,7 +25,7 @@ def creer_arbre():
 
 
 def est_vide(arbre):
-    return arbre == None
+    return arbre == () or arbre is None
 
 
 def rechercher(arbre, valeur):
