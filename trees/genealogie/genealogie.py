@@ -122,4 +122,9 @@ class Arbre(object):
         if self.est_vide():
             return Arbre(racine=elt)
         else:
+            return Arbre(elt,self)
+    def enlever(self):
+        pass
+    def display(self):
+        pass
 
