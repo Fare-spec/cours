@@ -1,6 +1,5 @@
-from math import gcd
-
 def est_premier(n):
+    """Vérifie si un nombre est premier."""
     if n < 2:
         return False
     for i in range(2, int(n**0.5) + 1):
@@ -28,7 +27,7 @@ def inverse(e, n):
         t, newt = newt, t - quotient * newt
         r, newr = newr, r - quotient * newr
     if r > 1:
-        raise ValueError("L'inverse modulaire n'existe pas")
+        raise ValueError("L'inverse modulaire n'existe pas.")
     if t < 0:
         t += n
     return t
@@ -44,19 +43,20 @@ def dechiffre(d, N, liste):
 
 def liste_en_chaine(liste):
     return ''.join(chr(x) for x in liste)
-
+cle = 17873
 a, b = 61, 53
 N = a * b
 phi = (a - 1) * (b - 1)
-e = 17
+e = 18607
+print(N)
 d = inverse(e, phi)
-cle = 29987
-l = [18802, 561, 13389, 1494, 561, 8038, 2177, 9098, 14888, 9098, 12143, 561, 8038, 12143, 9098, 2925, 19036, 9098, 26542, 561, 13389, 468, 19036, 20236]
-message_dechiffre = dechiffre(cle, N, l)
+
+message = "「有時，沒有人期待能做出什麼的人，卻完成了沒有人能想像的事。」"
+message_code = chaine_en_liste(message)
+message_chiffre = chiffre(e, N, message_code)
+message_dechiffre = dechiffre(d, N, message_chiffre)
 message_final = liste_en_chaine(message_dechiffre)
 
+print("Message initial:", message)
+print("Message chiffré:", message_chiffre)
 print("Message déchiffré:", message_final)
-
-
-
-
