@@ -50,13 +50,13 @@ N = a * b
 phi = (a - 1) * (b - 1)
 e = 17
 d = inverse(e, phi)
-
-message = "RSA"
-message_code = chaine_en_liste(message)
-message_chiffre = chiffre(e, N, message_code)
-message_dechiffre = dechiffre(d, N, message_chiffre)
+cle = 29987
+l = [18802, 561, 13389, 1494, 561, 8038, 2177, 9098, 14888, 9098, 12143, 561, 8038, 12143, 9098, 2925, 19036, 9098, 26542, 561, 13389, 468, 19036, 20236]
+message_dechiffre = dechiffre(cle, N, l)
 message_final = liste_en_chaine(message_dechiffre)
 
-print("Message initial:", message)
-print("Message chiffré:", message_chiffre)
 print("Message déchiffré:", message_final)
+
+
+
+
