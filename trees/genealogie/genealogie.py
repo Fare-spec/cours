@@ -110,21 +110,21 @@ class Arbre(object):
         if not (self.est_vide()):
             if self.racine == valeur:
                 return self
-        resultat = Arbre()
-        for ss_arbre in self.ss_arbres:
-            ss_arbre = Arbre(racine=None, ss_arbres=ss_arbre)
-            resultat = ss_arbre.rechercher(valeur)
-            if not (resultat == None):
-                break
-        return resultat
+            resultat = Arbre()
+            for ss_arbre in self.ss_arbres:
+                ss_arbre = Arbre(racine=None, ss_arbres=ss_arbre)
+                resultat = ss_arbre.rechercher(valeur)
+                if not (resultat == None):
+                    break
+            return resultat
+        return Arbre()
 
     def ajouter(self,elt):
         if self.est_vide():
             return Arbre(racine=elt)
         else:
             return Arbre(elt,self)
-    def enlever(self):
+    def enlever(self,elt):
         pass
     def display(self):
         pass
-
