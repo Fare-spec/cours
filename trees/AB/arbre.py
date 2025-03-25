@@ -113,15 +113,16 @@ class Arbre_Binaire_Recherche(Arbre_Binaire):
                 return self.ss_arbre_gauche
             else:
                 next = self.ss_arbre_droit.mini()
-                self.racine =next
+                self.racine = next
                 self.ss_arbre_droit = self.ss_arbre_droit.supprimer(next)
+
     def abr_vers_liste(self):
         if self.est_vide():
             return []
-        
+
         gauche = self.ss_arbre_gauche.abr_vers_liste() if self.ss_arbre_gauche else []
         droite = self.ss_arbre_droit.abr_vers_liste() if self.ss_arbre_droit else []
-        
+
         return gauche + [self.racine] + droite
 
 
@@ -156,7 +157,9 @@ if __name__ == "__main__":
     arbre = list_to_btree(liste)
     affiche(arbre, "prefixe")
     liste1 = arbre.abr_vers_liste()
-    print(liste1) # on observer que la liste devient triée (logique car on la trie pour la mettre dans l'arbre et on ne peut pas la recupérer comme si elle ne l'etait pas)
+    print(
+        liste1
+    )  # on observer que la liste devient triée (logique car on la trie pour la mettre dans l'arbre et on ne peut pas la recupérer comme si elle ne l'etait pas)
 
     # Exercice 5 ?
     pass
