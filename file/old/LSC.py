@@ -6,8 +6,8 @@ Elle met à distribution cette structure de données et son interface.
 @author: L. JOANNIC
 """
 
-
 # ############################################################################
+
 
 class Liste_Simplement_Chainee(object):
     """
@@ -45,7 +45,7 @@ class Liste_Simplement_Chainee(object):
             Vrai ssi la liste est vide.
 
         """
-        return (self._tete is None)
+        return self._tete is None
 
     def ajouter_en_tete(self, element):
         """
@@ -76,7 +76,7 @@ class Liste_Simplement_Chainee(object):
             donnee en tete.
 
         """
-        assert not(self.est_vide()), "Liste Vide"
+        assert not (self.est_vide()), "Liste Vide"
         return self._tete.donnee
 
     def queue(self):
@@ -89,11 +89,12 @@ class Liste_Simplement_Chainee(object):
             Queue de la liste.
 
         """
-        assert not(self.est_vide()), "Liste Vide"
+        assert not (self.est_vide()), "Liste Vide"
         return self._tete.suite
 
 
 # ############################################################################
+
 
 def creer_liste_vide():
     """
@@ -216,15 +217,17 @@ def afficher_liste(liste, taille=-1):
     """
     reste = liste
     compteur = 0
-    print('+-----\n|')
-    while not(est_vide(reste)) and (taille == -1 or compteur < taille):
-        print('+- {}\n|'.format(str(tete(reste))))
+    print("+-----\n|")
+    while not (est_vide(reste)) and (taille == -1 or compteur < taille):
+        print("+- {}\n|".format(str(tete(reste))))
         reste = queue(reste)
         compteur += 1
-    print('+-----')
+    print("+-----")
     return None
 
+
 # ############################################################################
+
 
 class Maillon(object):
     """

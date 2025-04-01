@@ -2,7 +2,7 @@ class Queue:
     def __init__(self) -> None:
         self.element = []
 
-    def enfiler(self,element):
+    def enfiler(self, element):
         self.element.append(element)
 
     def est_vide(self):
@@ -16,5 +16,5 @@ class Queue:
         return len(self.element)
 
     def index(self, k):
-        assert self.est_vide() , "La file est vide"
+        assert self.est_vide(), "La file est vide"
         return self.element[k]

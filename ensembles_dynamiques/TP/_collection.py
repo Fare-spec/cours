@@ -13,6 +13,7 @@
 # Un ensemble est une collection d'éléments, d'occurence unique.
 # Les fonctions sont implémentées dans le paradigme fonctionnel.
 
+
 def initialiser_ensemble():
     """
     Construit un ensemble vide.
@@ -26,10 +27,11 @@ def initialiser_ensemble():
     Pré-condition :
     - aucune
 
-    Effet de bord 
+    Effet de bord
     - aucune
     """
     return set()
+
 
 def est_ensemble_vide(ensemble):
     """
@@ -45,6 +47,7 @@ def est_ensemble_vide(ensemble):
     - aucun
     """
     return len(ensemble) == 0
+
 
 def copier_ensemble(ensemble):
     """
@@ -67,6 +70,7 @@ def copier_ensemble(ensemble):
         resultat.add(_)
     return resultat
 
+
 def ajouter(ensemble, element):
     """
     Ajoute un element à la copie d'un ensemble
@@ -88,10 +92,11 @@ def ajouter(ensemble, element):
     resultat.add(element)
     return resultat
 
+
 def supprimer(ensemble, element):
     """
     Construire une copie de l'ensemble privé d'un élément.
-    Si l'élément à supprimer n'est pas dans l'ensemble initial, 
+    Si l'élément à supprimer n'est pas dans l'ensemble initial,
     alors une copie intégrale est renvoyée.
 
     Paramètres :
@@ -103,11 +108,12 @@ def supprimer(ensemble, element):
     """
     resultat = initialiser_ensemble()
     for _ in ensemble:
-        if not(_ == element):
+        if not (_ == element):
             resultat = ajouter(resultat, _)
     return resultat
 
-def rechercher(ensemble, cle, critere = lambda x, y: x==y):
+
+def rechercher(ensemble, cle, critere=lambda x, y: x == y):
     """
     Construit la sous-collection constituée des éléments d'un ensemble
     dont la clé satisfait un critère donné.
@@ -132,9 +138,10 @@ def rechercher(ensemble, cle, critere = lambda x, y: x==y):
             resultat = ajouter(resultat, _)
     return resultat
 
+
 def supprimer_critere(ensemble, cle, critere):
     """
-    Construit la collection des éléments d'un ensemble, 
+    Construit la collection des éléments d'un ensemble,
     dont la clé satisfait le critère donné.
 
     Paramètres :
@@ -157,9 +164,10 @@ def supprimer_critere(ensemble, cle, critere):
         resultat = supprimer(resultat, _)
     return resultat
 
+
 def lister(ensemble, affichage=print):
     """
-    Afficher le contenu d'un ensemble, 
+    Afficher le contenu d'un ensemble,
     en formattant chaque élément selon la fonction d'affichage fournie.
 
     Paramètres :
@@ -178,7 +186,6 @@ def lister(ensemble, affichage=print):
     for element in ensemble:
         affichage(element)
     return None
-
 
 
 if __name__ == "__main__":

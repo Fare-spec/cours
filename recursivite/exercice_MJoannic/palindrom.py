@@ -1,4 +1,4 @@
-def is_palindrom(word)->bool:
+def is_palindrom(word) -> bool:
     word = list(word)
     if len(word) < 2:
         return True
@@ -9,4 +9,5 @@ def is_palindrom(word)->bool:
     else:
         return False
 
-print(is_palindrom("do geese see god".replace(' ', '')))
+
+print(is_palindrom("do geese see god".replace(" ", "")))

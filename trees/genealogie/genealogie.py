@@ -119,12 +119,14 @@ class Arbre(object):
             return resultat
         return Arbre()
 
-    def ajouter(self,elt):
+    def ajouter(self, elt):
         if self.est_vide():
             return Arbre(racine=elt)
         else:
-            return Arbre(elt,self)
-    def enlever(self,elt):
+            return Arbre(elt, self)
+
+    def enlever(self, elt):
         pass
+
     def display(self):
         pass

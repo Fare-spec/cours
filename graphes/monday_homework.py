@@ -50,6 +50,7 @@ def construire_bfs(graphe: dict, origine: str) -> dict:
         couleur[courant] = 2
     return resultat
 
+
 def construire_dfs(graphe: dict, origine: str) -> dict:
     """
     Construit un arbre DFS à partir de graphe et d'un sommet d'origine.
@@ -102,7 +103,9 @@ def construire_dfs(graphe: dict, origine: str) -> dict:
         couleur[courant] = 2
     return resultat
 
+
 if __name__ == "__main__":
     import doctest
+
     doctest.testmod(verbose=True)
-    print(construire_dfs(g, '1'))
+    print(construire_dfs(g, "1"))

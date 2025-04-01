@@ -16,17 +16,18 @@ import _sommets as som
 # Le module _collection définit nos ENSEMBLES
 # Le module _sommets définit nos SOMMETS
 
-def file_2_set(fichier='./data/Chartreuse.csv'):
+
+def file_2_set(fichier="./data/Chartreuse.csv"):
     """
     Lecture du fichier csv contenant les caractéristiques des sommets.
 
     Paramètres :
     - fichier : STR, le nom complet du fichier csv à parcourir
 
-    Résultat : 
+    Résultat :
     - resultat : ENSEMBLE, la collection des sommets
 
-    Pré-conditions : 
+    Pré-conditions :
     - aucune
 
     Effets de bord :
@@ -41,27 +42,29 @@ def file_2_set(fichier='./data/Chartreuse.csv'):
             ligne = src.readline()
     return resultat
 
+
 def rechercher(ensemble, motif):
     """
-    Recherche les sommets de la collection dont le nom 
+    Recherche les sommets de la collection dont le nom
     correspond à un motif donné.
 
     Paramètres :
     - ensemble : ENSEMBLE, la collection des somets
     - motif : STR, la chaîne de caractères à identifier
 
-    Résultat : 
+    Résultat :
     - ENSEMBLE, la sous-collection des sommets satisfaisant au critère
 
-    Pré-condition : 
+    Pré-condition :
     - aucune
 
     Effet de bord :
-    - aucun 
+    - aucun
     """
     return col.rechercher(ensemble, motif, som.coincide_nom)
 
 
-if __name__ == '__main__':
-    col.lister(col.supprimer_critere(file_2_set(), 'Grand', som.coincide_nom), \
-            som.afficher)
+if __name__ == "__main__":
+    col.lister(
+        col.supprimer_critere(file_2_set(), "Grand", som.coincide_nom), som.afficher
+    )

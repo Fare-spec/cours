@@ -15,3 +15,5 @@ class Configuration:
 if __name__ == "__main__":
     ruban = Ta
 
+
+class Machine:

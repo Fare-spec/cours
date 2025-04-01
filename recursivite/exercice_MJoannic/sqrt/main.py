@@ -2,9 +2,9 @@
 def racine_raphson(number: float, precision: float) -> float:
     assert number > 0, "La racine du nombre n'est pas réelle."
 
-    y = (number / 3)+ 1 
+    y = (number / 3) + 1
     diff = precision + 1
-    
+
     while diff > precision:
         y_next = (y + number / y) / 2.0
         diff = abs(y_next - y)
@@ -12,11 +12,18 @@ def racine_raphson(number: float, precision: float) -> float:
 
     return y
 
+
 if __name__ == "__main__":
-    print(racine_raphson(36, 0.000000000000001)**2 == 36)
+    print(racine_raphson(36, 0.000000000000001) ** 2 == 36)
 
 
-def dichotomie(liste: list[any], element: any, start: int = 0, end: int = None, bypass_sorting: bool = False) -> int:
+def dichotomie(
+    liste: list[any],
+    element: any,
+    start: int = 0,
+    end: int = None,
+    bypass_sorting: bool = False,
+) -> int:
     """Recherche la partie entière de la racine carrée d'un nombre en utilisant une recherche dichotomique.
 
     Args:
@@ -45,6 +52,7 @@ def dichotomie(liste: list[any], element: any, start: int = 0, end: int = None, 
     else:
         return dichotomie(liste, element, start, middle - 1, bypass_sorting=True)
 
+
 def racine_dich(number: int) -> int:
     """
     Calcul de la partie entière de la racine carrée d'un nombre entier.
@@ -60,9 +68,8 @@ def racine_dich(number: int) -> int:
     return dichotomie(liste, number)
 
 
-
 if __name__ == "__main__":
     print(racine_dich(36))  # Retourne 6
     print(racine_dich(20))  # Retourne 4
-    print(racine_dich(0))   # Retourne 0
-    print(racine_dich(1))   # Retourne 1
+    print(racine_dich(0))  # Retourne 0
+    print(racine_dich(1))  # Retourne 1

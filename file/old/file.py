@@ -7,6 +7,7 @@ def creer_file_vide():
     """
     return []
 
+
 def est_vide(file):
     """
     Vérifie si une file est vide.
@@ -18,6 +19,7 @@ def est_vide(file):
         bool: `True` si la file est vide, `False` sinon.
     """
     return len(file) == 0
+
 
 def enfiler(file, elt):
     """
@@ -32,6 +34,7 @@ def enfiler(file, elt):
     """
     return file.append(elt)
 
+
 def defiler(file: list):
     """
     Retire et renvoie le premier élément de la file.
@@ -44,6 +47,7 @@ def defiler(file: list):
     """
     return file[1:]
 
+
 def peak(file: list):
     """
     Renvoie l'élément en tête de la file sans le retirer.
@@ -55,4 +59,3 @@ def peak(file: list):
         L'élément en tête de la file.
     """
     return file[0]
-

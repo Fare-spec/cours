@@ -15,6 +15,7 @@
 # - altitude : INT, altitude en m
 # - massif : STR
 
+
 def creer_sommet(nom, altitude, massif):
     """
     Construit le tuple sommet.
@@ -30,10 +31,11 @@ def creer_sommet(nom, altitude, massif):
     Pré-condition :
     - aucune (programmation défensive à envisager)
 
-    Effet de bord : 
-    - aucun 
+    Effet de bord :
+    - aucun
     """
     return (nom, altitude, massif)
+
 
 def altitude_en_m(altitude):
     """
@@ -51,18 +53,19 @@ def altitude_en_m(altitude):
     Effet de bord :
     - aucun
     """
-    tmp = ''
+    tmp = ""
     for symbole in altitude:
-        if not(symbole in ' m'):
+        if not (symbole in " m"):
             tmp += symbole
     return int(tmp)
+
 
 def creer_sommet_csv(ligne, massif):
     """
     Construit un sommet à partir d'une ligne du fichier csv.
 
     Paramètres :
-    - ligne : STR, ligne du fichier csv 
+    - ligne : STR, ligne du fichier csv
     - massif : STR, basename du fichier contenant la ligne
 
     Résultat :
@@ -74,8 +77,9 @@ def creer_sommet_csv(ligne, massif):
     Effet de bord :
     - aucun
     """
-    nom, alt = ligne.rstrip().split(',')
+    nom, alt = ligne.rstrip().split(",")
     return creer_sommet(nom, altitude_en_m(alt), massif)
+
 
 def afficher(sommet):
     """
@@ -94,8 +98,9 @@ def afficher(sommet):
     - Affichage sur la sortie standard
     """
     nom, altitude, massif = sommet
-    print(f'{nom:35s}\t[{massif}]\n\taltitude : {altitude} m')
+    print(f"{nom:35s}\t[{massif}]\n\taltitude : {altitude} m")
     return None
+
 
 def nom(sommet):
     """
@@ -111,9 +116,10 @@ def nom(sommet):
     - aucune
 
     Effet de bord :
-    - aucun 
+    - aucun
     """
     return sommet[0]
+
 
 def altitude(sommet):
     """
@@ -129,9 +135,10 @@ def altitude(sommet):
     - aucune
 
     Effet de bord :
-    - aucun 
+    - aucun
     """
     return sommet[1]
+
 
 def massif(sommet):
     """
@@ -147,9 +154,10 @@ def massif(sommet):
     - aucune
 
     Effet de bord :
-    - aucun 
+    - aucun
     """
     return sommet[2]
+
 
 def coincide_nom(sommet, motif):
     """
@@ -169,7 +177,8 @@ def coincide_nom(sommet, motif):
     - aucun
     """
     nom_sommet = nom(sommet)
-    return (len(motif) <= len(nom_sommet)) and (nom_sommet[:len(motif)] == motif)
+    return (len(motif) <= len(nom_sommet)) and (nom_sommet[: len(motif)] == motif)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     pass

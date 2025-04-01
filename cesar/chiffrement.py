@@ -1,12 +1,15 @@
 import string
 
+
 def load_file():
     with open("message.txt", "r", encoding="utf-8") as f:
         content = f.read()
     return content
 
+
 lower_case = string.ascii_lowercase
 upper_case = string.ascii_uppercase
+
 
 def dechiffrer(content, step):
     resultat = ""
@@ -22,6 +25,7 @@ def dechiffrer(content, step):
             resultat += char
 
     return resultat
+
 
 contenu = load_file()
 texte_dechiffre = dechiffrer(contenu, step=17)

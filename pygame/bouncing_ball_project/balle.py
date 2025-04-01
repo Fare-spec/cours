@@ -1,6 +1,7 @@
 import pygame
 import pygame
 
+
 class Balle:
     """
     Definie une balle qui se deplace dans la fenetre ecran
@@ -29,4 +30,6 @@ class Balle:
         Paramètres :
             ecran : pygame.Surface - L'écran où dessiner la balle
         """
-        pygame.draw.circle(ecran, (255, 0, 0), (int(self.xpos), int(self.ypos)), self.rayon)
+        pygame.draw.circle(
+            ecran, (255, 0, 0), (int(self.xpos), int(self.ypos)), self.rayon
+        )

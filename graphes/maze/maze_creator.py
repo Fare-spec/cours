@@ -1,5 +1,6 @@
 import random as rnd
 
+
 class Labyrinth:
     def __init__(self, rows, cols) -> None:
         self.rows = rows
@@ -20,7 +21,7 @@ class Labyrinth:
             nx, ny = x + dx, y + dy
             if 0 <= nx < self.rows and 0 <= ny < self.cols and self.grid[nx][ny] == 1:
                 voisins.append((nx, ny))
-        
+
         return voisins
 
     def casser_mur(self, x1, y1, x2, y2):
@@ -50,7 +51,11 @@ class Labyrinth:
             # Trouver une cellule voisine qui est déjà un chemin
             for dx, dy in [(-2, 0), (2, 0), (0, -2), (0, 2)]:
                 cx, cy = nx + dx, ny + dy
-                if 0 <= cx < self.rows and 0 <= cy < self.cols and self.grid[cx][cy] == 0:
+                if (
+                    0 <= cx < self.rows
+                    and 0 <= cy < self.cols
+                    and self.grid[cx][cy] == 0
+                ):
                     # Casser le mur entre les deux cellules
                     self.casser_mur(cx, cy, nx, ny)
                     # Ajouter les nouveaux murs adjacents
@@ -68,5 +73,6 @@ class Labyrinth:
         """
         Représente le labyrinthe sous forme de chaîne de caractères.
         """
-        return "\n".join("".join(" " if cell == 0 else "#" for cell in row) for row in self.grid)
-
+        return "\n".join(
+            "".join(" " if cell == 0 else "#" for cell in row) for row in self.grid
+        )

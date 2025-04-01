@@ -16,6 +16,7 @@
 # - altitude : INT, altitude en m
 # - massif : STR
 
+
 def creer_sommet(nom, altitude, massif):
     """
     Construit le dico sommet.
@@ -31,16 +32,13 @@ def creer_sommet(nom, altitude, massif):
     Pré-condition :
     - aucune (programmation défensive à envisager)
 
-    Effet de bord : 
-    - aucun 
+    Effet de bord :
+    - aucun
     """
-    sommet = {
-            "Nom": nom,
-            "Altitude": altitude,
-            "Massif": massif
-    }
+    sommet = {"Nom": nom, "Altitude": altitude, "Massif": massif}
 
     return sommet
+
 
 def altitude_en_m(altitude):
     """
@@ -58,18 +56,19 @@ def altitude_en_m(altitude):
     Effet de bord :
     - aucun
     """
-    tmp = ''
+    tmp = ""
     for symbole in altitude:
-        if not(symbole in ' m'):
+        if not (symbole in " m"):
             tmp += symbole
     return int(tmp)
+
 
 def creer_sommet_csv(ligne, massif):
     """
     Construit un sommet à partir d'une ligne du fichier csv.
 
     Paramètres :
-    - ligne : STR, ligne du fichier csv 
+    - ligne : STR, ligne du fichier csv
     - massif : STR, basename du fichier contenant la ligne
 
     Résultat :
@@ -81,8 +80,9 @@ def creer_sommet_csv(ligne, massif):
     Effet de bord :
     - aucun
     """
-    nom, alt = ligne.rstrip().split(',')
+    nom, alt = ligne.rstrip().split(",")
     return creer_sommet(nom, altitude_en_m(alt), massif)
+
 
 def afficher(sommet):
     """
@@ -101,7 +101,9 @@ def afficher(sommet):
     - Affichage sur la sortie standard
     """
 
-    print(f"{sommet['Nom']:35s}\t[{sommet['Massif']}]\n\taltitude : {sommet['Altitude']} m")
+    print(
+        f"{sommet['Nom']:35s}\t[{sommet['Massif']}]\n\taltitude : {sommet['Altitude']} m"
+    )
 
 
 def nom(sommet):
@@ -118,9 +120,11 @@ def nom(sommet):
     - aucune
 
     Effet de bord :
-    - aucun 
+    - aucun
     """
     return sommet["Nom"]
+
+
 def altitude(sommet):
     """
     Consulte l'altitude d'un sommet
@@ -135,9 +139,11 @@ def altitude(sommet):
     - aucune
 
     Effet de bord :
-    - aucun 
+    - aucun
     """
-    return sommet['Altitude']
+    return sommet["Altitude"]
+
+
 def massif(sommet):
     """
     Consulte le massif d'un sommet
@@ -152,9 +158,11 @@ def massif(sommet):
     - aucune
 
     Effet de bord :
-    - aucun 
+    - aucun
     """
     return sommet["Massif"]
+
+
 def coincide_nom(sommet, motif):
     """
     Compare le nom du sommet au motif
@@ -174,7 +182,8 @@ def coincide_nom(sommet, motif):
     """
 
     nom_sommet = nom(sommet)
-    return (len(motif) <= len(nom_sommet)) and (nom_sommet[:len(motif)] == motif)
+    return (len(motif) <= len(nom_sommet)) and (nom_sommet[: len(motif)] == motif)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     pass

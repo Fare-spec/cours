@@ -9,7 +9,7 @@ pygame.init()
 # Création de la fenêtre
 ecran = pygame.display.set_mode((LARGEUR_ECRAN, HAUTEUR_ECRAN))
 ecran.fill(BLANC)
-pygame.display.set_caption('Balle rebondissante avec raquette')
+pygame.display.set_caption("Balle rebondissante avec raquette")
 
 clock = pygame.time.Clock()
 
@@ -37,8 +37,10 @@ while True:  # Boucle principale
         balle.deplace()
 
     # Collision balle-raquette
-    if (balle.ypos + balle.rayon >= HAUTEUR_ECRAN - 20 and
-            raquette.xpos <= balle.xpos <= raquette.xpos + raquette.largeur):
+    if (
+        balle.ypos + balle.rayon >= HAUTEUR_ECRAN - 20
+        and raquette.xpos <= balle.xpos <= raquette.xpos + raquette.largeur
+    ):
         balle.yvit = -balle.yvit
 
     balle.affiche(ecran)
@@ -46,4 +48,3 @@ while True:  # Boucle principale
 
     pygame.display.update()
     clock.tick(60)
-

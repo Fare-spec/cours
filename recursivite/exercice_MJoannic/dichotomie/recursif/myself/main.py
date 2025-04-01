@@ -1,7 +1,14 @@
 from sort_list import sort_list
 from typing import Any
 
-def dichotomie(liste: list[Any], element: Any, start: int = 0, end: int = None, bypass_sorting: bool = False) -> bool:
+
+def dichotomie(
+    liste: list[Any],
+    element: Any,
+    start: int = 0,
+    end: int = None,
+    bypass_sorting: bool = False,
+) -> bool:
     """Performs a dichotomy search to determine if an element exists in a list or not.
 
     Args:
@@ -33,6 +40,10 @@ def dichotomie(liste: list[Any], element: Any, start: int = 0, end: int = None, 
     if liste[middle] == element:
         return True
     elif element < liste[middle]:
-        return dichotomie(liste, element, start, middle - 1, bypass_sorting=True) # bypass_sorting because it's already done
+        return dichotomie(
+            liste, element, start, middle - 1, bypass_sorting=True
+        )  # bypass_sorting because it's already done
     else:
-        return dichotomie(liste, element, middle + 1, end, bypass_sorting=True) # bypass_sorting because it's already done
+        return dichotomie(
+            liste, element, middle + 1, end, bypass_sorting=True
+        )  # bypass_sorting because it's already done

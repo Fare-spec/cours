@@ -13,6 +13,7 @@
 # Un ensemble est une collection d'éléments, d'occurence unique.
 # Les fonctions sont implémentées dans le paradigme fonctionnel.
 
+
 def initialiser_ensemble():
     """
     Construit un ensemble vide.
@@ -31,6 +32,7 @@ def initialiser_ensemble():
     """
     return list()
 
+
 def est_ensemble_vide(ensemble):
     """
     Teste si l'ensemble est vide.
@@ -45,6 +47,7 @@ def est_ensemble_vide(ensemble):
     - aucun
     """
     return len(ensemble) == 0
+
 
 def copier_ensemble(ensemble):
     """
@@ -63,6 +66,7 @@ def copier_ensemble(ensemble):
     - aucun
     """
     return ensemble[:]
+
 
 def ajouter(ensemble, element):
     """
@@ -85,10 +89,11 @@ def ajouter(ensemble, element):
     copie.append(element)
     return copie
 
+
 def supprimer(ensemble, element):
     """
     Construire une copie de l'ensemble privé d'un élément.
-    Si l'élément à supprimer n'est pas dans l'ensemble initial, 
+    Si l'élément à supprimer n'est pas dans l'ensemble initial,
     alors une copie intégrale est renvoyée.
 
     Paramètres :
@@ -101,7 +106,8 @@ def supprimer(ensemble, element):
     resultat = ensemble[:]
     return resultat.remove(element)
 
-def rechercher(ensemble, cle, critere = lambda x, y: x==y):
+
+def rechercher(ensemble, cle, critere=lambda x, y: x == y):
     """
     Construit la sous-collection constituée des éléments d'un ensemble
     dont la clé satisfait un critère donné.
@@ -122,9 +128,10 @@ def rechercher(ensemble, cle, critere = lambda x, y: x==y):
     """
     return [element for element in ensemble if critere(element, cle)]
 
+
 def supprimer_critere(ensemble, cle, critere):
     """
-    Construit la collection des éléments d'un ensemble, 
+    Construit la collection des éléments d'un ensemble,
     dont la clé satisfait le critère donné.
 
     Paramètres :
@@ -141,11 +148,12 @@ def supprimer_critere(ensemble, cle, critere):
     Effet de bord :
     - aucun
     """
-    return [element for element in ensemble if not critere(element,cle)] 
+    return [element for element in ensemble if not critere(element, cle)]
+
 
 def lister(ensemble, affichage=print):
     """
-    Afficher le contenu d'un ensemble, 
+    Afficher le contenu d'un ensemble,
     en formattant chaque élément selon la fonction d'affichage fournie.
 
     Paramètres :
@@ -163,5 +171,7 @@ def lister(ensemble, affichage=print):
     """
     for item in ensemble:
         affichage(item)
+
+
 if __name__ == "__main__":
     pass

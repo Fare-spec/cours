@@ -3,19 +3,24 @@ import time
 import matplotlib.pyplot as plt
 import math
 
+
 # Définir les fonctions
 def fibobo(n):
     if n <= 1:
         return n
     return fibobo(n - 1) + fibobo(n - 2)
 
+
 def fibibi(n):
     fibi = np.array([[1, 1], [1, 0]])
     return np.linalg.matrix_power(fibi, n)[0][-1]
 
+
 # Benchmark des temps d'exécution
-n_values_recursive = range(1, 35, 1)  # Plage raisonnable pour fibobo (approche récursive)
-n_values_matrix = range(1, 50, 1)    # Limiter n pour éviter les dépassements avec 2^n
+n_values_recursive = range(
+    1, 35, 1
+)  # Plage raisonnable pour fibobo (approche récursive)
+n_values_matrix = range(1, 50, 1)  # Limiter n pour éviter les dépassements avec 2^n
 
 # Temps pour fibobo
 times_recursive = []
@@ -39,10 +44,10 @@ exp_2_n = [2**n for n in n_values_matrix]
 plt.figure(figsize=(12, 8))
 
 # Graphe des temps pour fibobo
-plt.plot(n_values_recursive, times_recursive, label="fibobo (récursif)", marker='o')
+plt.plot(n_values_recursive, times_recursive, label="fibobo (récursif)", marker="o")
 
 # Graphe des temps pour fibibi
-plt.plot(n_values_matrix, times_matrix, label="fibibi (matriciel)", marker='s')
+plt.plot(n_values_matrix, times_matrix, label="fibibi (matriciel)", marker="s")
 
 # Ajouter log(n) pour comparaison simple
 plt.plot(n_values_matrix, log_n, label="log(n)", linestyle="--")
@@ -51,7 +56,7 @@ plt.plot(n_values_matrix, log_n, label="log(n)", linestyle="--")
 plt.plot(n_values_matrix, exp_2_n, label="2^n", linestyle=":")
 
 # Ajuster l'échelle de l'axe y pour éviter les dépassements
-plt.yscale('log')  # Échelle logarithmique pour mieux visualiser les variations
+plt.yscale("log")  # Échelle logarithmique pour mieux visualiser les variations
 plt.ylim(1e-6, 1e10)  # Limiter les valeurs extrêmes
 
 plt.title("Comparaison des performances avec log(n) et 2^n")

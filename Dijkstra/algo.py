@@ -52,7 +52,7 @@ def dijkstra(graph: dict, start: any) -> tuple:
     """
     distances, predecesseur, unvisited = {}, {}, {}
     for sommet in graph:
-        distances[sommet] = float('inf')
+        distances[sommet] = float("inf")
         unvisited[sommet] = distances[sommet]
     distances[start] = 0
     while unvisited:
@@ -95,6 +95,7 @@ def reconstruire_chemin(predecesseur: dict, start: any, end: any) -> list:
     chemin.reverse()
     return chemin
 
+
 def solutions_dijkstra(graph: dict, start: any) -> dict:
     """elle renvoie le dictionnaire des noeud et distances grace au chemin
 
@@ -132,19 +133,22 @@ def solutions_dijkstra(graph: dict, start: any) -> dict:
         solutions[sommet] = {"distance": distances[sommet], "chemin": chemin}
     return solutions
 
+
 if __name__ == "__main__":
     import doctest
+
     doctest.testmod(verbose=True)
     graph = {
-        'A': [('B', 4), ('C', 2)],
-        'B': [('C', 5), ('D', 10)],
-        'C': [('D', 3), ('E', 8)],
-        'D': [('E', 4), ('F', 11)],
-        'E': [('G', 6)],
-        'F': [('G', 2)],
-        'G': []
+        "A": [("B", 4), ("C", 2)],
+        "B": [("C", 5), ("D", 10)],
+        "C": [("D", 3), ("E", 8)],
+        "D": [("E", 4), ("F", 11)],
+        "E": [("G", 6)],
+        "F": [("G", 2)],
+        "G": [],
     }
-    solution = solutions_dijkstra(graph, 'A')
+    solution = solutions_dijkstra(graph, "A")
     for sommet, info in solution.items():
-        print(f"sommet: {sommet} ----- Distance: {info['distance']} ------- chemin: {info['chemin']}")
-    
+        print(
+            f"sommet: {sommet} ----- Distance: {info['distance']} ------- chemin: {info['chemin']}"
+        )

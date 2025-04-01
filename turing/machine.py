@@ -5,25 +5,25 @@ class Tape:
 
     def read(self):
         if self.head < 0:
-            self.tape = ['•'] * (-self.head) + self.tape
+            self.tape = ["•"] * (-self.head) + self.tape
             self.head = 0
         elif self.head >= len(self.tape):
-            self.tape += ['•'] * (self.head - len(self.tape) + 1)
+            self.tape += ["•"] * (self.head - len(self.tape) + 1)
         return self.tape[self.head]
 
     def write(self, symbol):
         self.tape[self.head] = symbol
 
     def move(self, direction):
-        if direction == 'g':
+        if direction == "g":
             self.head -= 1
-        elif direction == 'd':
+        elif direction == "d":
             self.head += 1
 
     def __str__(self):
-        tape_str = ''.join(self.tape)
-        pointer = ' ' * self.head + '^'
-        return f'{tape_str}\n{pointer}'
+        tape_str = "".join(self.tape)
+        pointer = " " * self.head + "^"
+        return f"{tape_str}\n{pointer}"
 
 
 class TuringMachine:
@@ -37,10 +37,15 @@ class TuringMachine:
         steps = 0
         while self.state != self.final_state:
             current_symbol = tape.read()
-            if self.state not in self.transitions or current_symbol not in self.transitions[self.state]:
+            if (
+                self.state not in self.transitions
+                or current_symbol not in self.transitions[self.state]
+            ):
                 print("No transition rule found. Halting.")
                 break
-            write_symbol, direction, next_state = self.transitions[self.state][current_symbol]
+            write_symbol, direction, next_state = self.transitions[self.state][
+                current_symbol
+            ]
             tape.write(write_symbol)
             tape.move(direction)
             self.state = next_state
@@ -51,12 +56,7 @@ class TuringMachine:
 
 
 transitions = {
-    'init': {
-        '1': ('1', 'd', 'init'),
-        '0': ('0', 'd', 'init'),
-        '•': ('1', 'g', 'end')  # ajoute un 1 à la fin
-    }
+    "init": {"1": ("1", "d", "init"), "0": ("0", "d", "init"), "•": ("1", "g", "end")}
 }
-tm = TuringMachine(transitions, initial_state='init', final_state='end')
+tm = TuringMachine(transitions, initial_state="init", final_state="end")
 tm.run("1011")
-

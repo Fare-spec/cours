@@ -1,16 +1,23 @@
 from TDliste2liste.exercice6 import diag_1, diag_2, colonne
+
+
 def check_diagonale(liste):
-	return diag1(liste), diag2(liste)
+    return diag1(liste), diag2(liste)
+
+
 def check_colonne(liste):
-	somme = []
-	for i in range(len(liste)):
-		somme.append(colonne(i,liste))
-	return somme
+    somme = []
+    for i in range(len(liste)):
+        somme.append(colonne(i, liste))
+    return somme
+
+
 def check_line(liste):
-	somme = []
-	for i in range(len(liste)):
-		somme.append(sum(liste[i]))
-	return somme
+    somme = []
+    for i in range(len(liste)):
+        somme.append(sum(liste[i]))
+    return somme
+
 
 def check_all(carre):
     diag1_values, diag2_values = check_diagonale(carre)
@@ -42,7 +49,6 @@ def check_all(carre):
 
     return all_same
 
-carre1=[[4, 9, 2],\
-        [3, 5, 7],\
-        [8, 1, 6]]
+
+carre1 = [[4, 9, 2], [3, 5, 7], [8, 1, 6]]
 print(check_all(carre1))

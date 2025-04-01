@@ -1,4 +1,6 @@
-from fifo import Pile  # Remplacez "fifo" par le nom exact de votre fichier contenant la classe Pile
+from fifo import (
+    Pile,
+)  # Remplacez "fifo" par le nom exact de votre fichier contenant la classe Pile
 
 # Initialisation
 pile = Pile()
@@ -13,7 +15,9 @@ assert pile.element == [5, 10], "Erreur : Les éléments de la pile ne correspon
 assert not pile.est_vide(), "Erreur : La pile ne devrait pas être vide"
 pile.defiler()
 pile.defiler()
-assert pile.est_vide(), "Erreur : La pile devrait être vide après avoir défiler tous les éléments"
+assert (
+    pile.est_vide()
+), "Erreur : La pile devrait être vide après avoir défiler tous les éléments"
 
 # Test de defiler
 pile.empiler(7)
@@ -48,4 +52,3 @@ except AssertionError as e:
     pass  # Test réussi
 
 print("Tous les tests sont passés avec succès !")
-

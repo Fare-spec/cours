@@ -3,9 +3,9 @@ import random
 import sys
 
 # Paramètres de la grille
-CELL_SIZE = 20          # Taille d'une cellule en pixels
-COLS = 30               # Nombre de colonnes
-ROWS = 30               # Nombre de lignes
+CELL_SIZE = 20  # Taille d'une cellule en pixels
+COLS = 30  # Nombre de colonnes
+ROWS = 30  # Nombre de lignes
 WIDTH = COLS * CELL_SIZE
 HEIGHT = ROWS * CELL_SIZE
 
@@ -15,12 +15,13 @@ WHITE = (255, 255, 255)
 GRAY = (100, 100, 100)
 GREEN = (0, 255, 0)
 
+
 class Cell:
     def __init__(self, i, j):
         self.i = i  # Numéro de la colonne
         self.j = j  # Numéro de la ligne
         # Chaque cellule possède 4 murs, tous présents initialement
-        self.walls = {'top': True, 'right': True, 'bottom': True, 'left': True}
+        self.walls = {"top": True, "right": True, "bottom": True, "left": True}
         self.visited = False
 
     def draw(self, surface):
@@ -31,22 +32,28 @@ class Cell:
         # Remplir la cellule (si visitée) AVANT de dessiner les murs
         if self.visited:
             pygame.draw.rect(surface, GRAY, (x, y, CELL_SIZE, CELL_SIZE))
-        
+
         # Dessiner les murs par-dessus la couleur de fond
-        if self.walls['top']:
+        if self.walls["top"]:
             pygame.draw.line(surface, WHITE, (x, y), (x + CELL_SIZE, y))
-        if self.walls['right']:
-            pygame.draw.line(surface, WHITE, (x + CELL_SIZE, y), (x + CELL_SIZE, y + CELL_SIZE))
-        if self.walls['bottom']:
-            pygame.draw.line(surface, WHITE, (x + CELL_SIZE, y + CELL_SIZE), (x, y + CELL_SIZE))
-        if self.walls['left']:
+        if self.walls["right"]:
+            pygame.draw.line(
+                surface, WHITE, (x + CELL_SIZE, y), (x + CELL_SIZE, y + CELL_SIZE)
+            )
+        if self.walls["bottom"]:
+            pygame.draw.line(
+                surface, WHITE, (x + CELL_SIZE, y + CELL_SIZE), (x, y + CELL_SIZE)
+            )
+        if self.walls["left"]:
             pygame.draw.line(surface, WHITE, (x, y + CELL_SIZE), (x, y))
+
 
 def get_cell(i, j):
     """Retourne la cellule aux coordonnées (i, j) si elle existe."""
     if 0 <= i < COLS and 0 <= j < ROWS:
         return grid[i][j]
     return None
+
 
 def get_unvisited_neighbors(cell):
     """Retourne la liste des voisins non visités de la cellule donnée."""
@@ -68,8 +75,9 @@ def get_unvisited_neighbors(cell):
     left = get_cell(i - 1, j)
     if left and not left.visited:
         neighbors.append(left)
-    
+
     return neighbors
+
 
 def remove_walls(current, next_cell):
     """
@@ -78,17 +86,18 @@ def remove_walls(current, next_cell):
     dx = next_cell.i - current.i
     dy = next_cell.j - current.j
     if dx == 1:  # Voisin à droite
-        current.walls['right'] = False
-        next_cell.walls['left'] = False
+        current.walls["right"] = False
+        next_cell.walls["left"] = False
     elif dx == -1:  # Voisin à gauche
-        current.walls['left'] = False
-        next_cell.walls['right'] = False
+        current.walls["left"] = False
+        next_cell.walls["right"] = False
     elif dy == 1:  # Voisin en bas
-        current.walls['bottom'] = False
-        next_cell.walls['top'] = False
+        current.walls["bottom"] = False
+        next_cell.walls["top"] = False
     elif dy == -1:  # Voisin en haut
-        current.walls['top'] = False
-        next_cell.walls['bottom'] = False
+        current.walls["top"] = False
+        next_cell.walls["bottom"] = False
+
 
 def main():
     global grid
@@ -99,7 +108,7 @@ def main():
 
     # Création de la grille : une matrice de cellules
     grid = [[Cell(i, j) for j in range(ROWS)] for i in range(COLS)]
-    
+
     # Initialisation de l'algorithme DFS
     current = grid[0][0]  # Départ en haut à gauche
     current.visited = True
@@ -143,12 +152,12 @@ def main():
             x = current.i * CELL_SIZE
             y = current.j * CELL_SIZE
             pygame.draw.rect(screen, GREEN, (x, y, CELL_SIZE, CELL_SIZE))
-        
+
         pygame.display.flip()
 
     pygame.quit()
     sys.exit()
 
-if __name__ == '__main__':
-    main()
 
+if __name__ == "__main__":
+    main()

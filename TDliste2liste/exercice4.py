@@ -8,5 +8,6 @@ def cree_carre_entier_1_n_carre(n):
             compteur += 1
         carre.append(ligne)
     return carre
-print(cree_carre_entier_1_n_carre(8))
 
+
+print(cree_carre_entier_1_n_carre(8))
