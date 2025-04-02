@@ -161,5 +161,37 @@ if __name__ == "__main__":
         liste1
     )  # on observer que la liste devient triée (logique car on la trie pour la mettre dans l'arbre et on ne peut pas la recupérer comme si elle ne l'etait pas)
 
-    # Exercice 5 ?
-    pass
+tas = [1, 5, 8, 10, 11, 12, 18, 19, 20, 23, 29, 73]
+
+
+def ajouter(tas, element):
+    tas.append(element)
+    i = len(tas) - 1
+
+    while i > 0:
+        parent = (i - 1) // 2
+        if tas[i] < tas[parent]:
+            tas[i], tas[parent] = tas[parent], tas[i]
+            i = parent
+        else:
+            break
+
+
+
+# nlog(n)
+class Tas_Max(object):
+    @staticmethod
+    def parent(i):
+        return (i-1)//2
+    @staticmethod
+
+    def enfant_gauche(i):
+        return 2*i+1
+    @staticmethod
+
+    def enfant_droite(i):
+        return 2*i+2
+# exercice 6:1. Proposer une méthode d’extraction de la racine.
+def extract_racine(tas):
+    racine = tas.pop()
+    
