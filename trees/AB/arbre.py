@@ -177,21 +177,79 @@ def ajouter(tas, element):
             break
 
 
-
 # nlog(n)
 class Tas_Max(object):
     @staticmethod
     def parent(i):
-        return (i-1)//2
-    @staticmethod
+        return (i - 1) // 2
 
+    @staticmethod
     def enfant_gauche(i):
-        return 2*i+1
-    @staticmethod
+        return 2 * i + 1
 
+    @staticmethod
     def enfant_droite(i):
-        return 2*i+2
-# exercice 6:1. Proposer une méthode d’extraction de la racine.
-def extract_racine(tas):
-    racine = tas.pop()
-    
+        return 2 * i + 2
+
+    def __init__(self) -> None:
+        self.elements = list()
+        self.taille = 0
+
+    def existe_enfant_gauche(self, i):
+        return 2 * i + 1 < self.taille
+
+    def existe_enfant_droit(self, i):
+        return 2 * i + 2 < self.taille
+
+    def tamiser(self, racine):
+        while racine > 0 and self.elements[racine] > self.elements[parent(raicne)]:
+            self.elements[racine], self.element[parent(racine)] = (
+                self.elements[parent(racine)],
+                self.elements[racine],
+            )
+
+    def ratisser(self, racine):
+        courant = racine
+        if (
+            self.existe_enfant_gauche(racine)
+            and self.elements[enfant_gauche(racine)] > self.element[racine]
+        ):
+            courant = enfant_gauche(racine)
+        if (
+            self.existe_enfant_droit(racine)
+            and self.elements[enfant_droit(racine)] > self.elements[courant]
+        ):
+            courant = enfant_droit(racine)
+        if courant != racine:
+            self.elements[racine], self.elements[courant] = (
+                self.elements[courant],
+                self.elements[racine],
+            )
+
+    def ajouter(self, element):
+        self.elements.append(element)
+        self.taille += 1
+        self.tamiser(self.taille)
+
+    def extraire_racine(self):
+        if self.taille == 0:
+            return None
+        racine = self.elements[0]
+        if self.taille > 0:
+            self.elements[0] = self.elements.pop()
+            self.ratisser(0)
+        else:
+            self.elements.pop()
+        return racine
+
+
+def liste_vers_tas_max(liste):
+    tas = Tas_Max()
+    for i in liste:
+        tas.ajouter(i)
+    return tas
+
+
+if __name__ == "__main__":
+    l1 = [1, 2, 3, 8, 7, 6, 5, 4]
+    tas = liste_vers_tas_max(l1)
