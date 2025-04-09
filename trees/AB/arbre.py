@@ -248,7 +248,28 @@ def liste_vers_tas_max(liste):
     for i in liste:
         tas.ajouter(i)
     return tas
+def tas_max_vers_liste(tas):
+    resultat = []
+    while tas.taille > 0:
+        resultat.append(tas.extraire_racine())
+    return resultat
+def convertir_liste_en_tas(liste):
+    def ratisser(elements, taille, i):
+        plus_grand = i
+        g = 2 * i + 1
+        d = 2 * i + 2
 
+        if g < taille and elements[g] > elements[plus_grand]:
+            plus_grand = g
+        if d < taille and elements[d] > elements[plus_grand]:
+            plus_grand = d
+        if plus_grand != i:
+            elements[i], elements[plus_grand] = elements[plus_grand], elements[i]
+            ratisser(elements, taille, plus_grand)
+
+    n = len(liste)
+    for i in range(n // 2 - 1, -1, -1):
+        ratisser(liste, n, i)
 
 if __name__ == "__main__":
     l1 = [1, 2, 3, 8, 7, 6, 5, 4]
