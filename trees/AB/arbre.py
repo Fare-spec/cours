@@ -230,6 +230,7 @@ class Tas_Max(object):
         self.elements.append(element)
         self.taille += 1
         self.tamiser(self.taille)
+        return None
 
     def extraire_racine(self):
         if self.taille == 0:
@@ -248,11 +249,15 @@ def liste_vers_tas_max(liste):
     for i in liste:
         tas.ajouter(i)
     return tas
+
+
 def tas_max_vers_liste(tas):
     resultat = []
     while tas.taille > 0:
         resultat.append(tas.extraire_racine())
     return resultat
+
+
 def convertir_liste_en_tas(liste):
     def ratisser(elements, taille, i):
         plus_grand = i
@@ -270,6 +275,7 @@ def convertir_liste_en_tas(liste):
     n = len(liste)
     for i in range(n // 2 - 1, -1, -1):
         ratisser(liste, n, i)
+
 
 if __name__ == "__main__":
     l1 = [1, 2, 3, 8, 7, 6, 5, 4]
