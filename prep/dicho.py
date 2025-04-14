@@ -23,5 +23,18 @@ if __name__ == "__main__":
     print(l1)
 
 def dichotomie(liste,ordre,element):
-    middle = len(liste) // 2
+    gauche = 0
+    droite = len(liste)
+    while (droite - gauche)-1:
+        millieu = (gauche + droite) //2
+        if ordre(liste[millieu],element)//2 ==0:
+            gauche, droite = millieu, milleu +1
+        elif ordre(liste[millieu],element) == -1:
+            droite = millieu
+        else:
+            gauche = millieu+1
+    if gauche-droite > 0 and liste[gauche] = element:
+        return gauche
+    else:
+        return -1
 
