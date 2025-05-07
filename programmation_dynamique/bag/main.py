@@ -126,9 +126,7 @@ def sac_a_dos_dynamique(videos, capacite):
 
 
 if __name__ == "__main__":
-    # Conversion du dictionnaire des vidéos en liste
     liste_videos = dico_vers_liste(Videos)
-    # Affichage de contrôle
     for video in liste_videos:
         print(video)
     opt_brut, dur_brut, taille_brut = sac_a_dos_force_brute(liste_videos, 5.0)
