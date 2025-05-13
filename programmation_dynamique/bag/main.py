@@ -50,7 +50,7 @@ def entier_vers_binaire(n: int, taille: int) -> list:
     return bits
 
 
-def ensemble_des_parties(ensemble: list) -> iterator:
+def ensemble_des_parties(ensemble: list):
     """
     Construit l'itérable enumérant toutes les parties d'un ensemble.
     PARAM. :
@@ -100,7 +100,7 @@ def sac_a_dos_glouton(videos, capacite, cle):
     return sélection, totale_duree, totale_taille
 
 
-def sac_a_dos_dynamique(videos, capacite):
+'''def sac_a_dos_dynamique(videos, capacite):
     precision = 100
     capacite = int(capacite * precision)
     liste = list(videos.items())
@@ -122,7 +122,22 @@ def sac_a_dos_dynamique(videos, capacite):
             nom, info = liste[i - 1]
             selection.append(nom)
             cap -= int(info["taille"] * precision)
-    return selection[::-1]
+    return selection[::-1]'''
+
+
+def sac_a_dos_dynamique(videos, capacite):
+    dp = [(0, []) for _ in range(capacite + 1)]
+    for nom, info in videos.items():
+        duree = info['Durée']
+        taille = info['taille']
+        for c in range(capacite, taille - 1, -1):
+            prev_duree, prev_sel = dp[c - taille]
+            if prev_duree + duree > dp[c][0]:
+                dp[c] = (prev_duree + duree, prev_sel + [nom])
+    return dp[capacite][1]
+
+
+
 
 
 if __name__ == "__main__":
@@ -148,15 +163,15 @@ if __name__ == "__main__":
     )
     print("--- Glouton par durée décroissante ---")
     print(
-        f"Vidéos : {sel_duree}\nDurée : {dur_duree} min\nTaille : {taille_duree:.3f} Go\n"
+        f"Vidéos : {selection_duree}\nDurée : {dur_duree} min\nTaille : {taille_duree:.3f} Go\n"
     )
     print("--- Glouton par taille croissante ---")
     print(
-        f"Vidéos : {sel_taille}\nDurée : {dur_taille} min\nTaille : {taille_taille:.3f} Go\n"
+        f"Vidéos : {selection_taille}\nDurée : {dur_taille} min\nTaille : {taille_taille:.3f} Go\n"
     )
     print("--- Glouton par ratio durée/taille ---")
     print(
-        f"Vidéos : {sel_ratio}\nDurée : {dur_ratio} min\nTaille : {taille_ratio:.3f} Go\n"
+        f"Vidéos : {selection_ratio}\nDurée : {dur_ratio} min\nTaille : {taille_ratio:.3f} Go\n"
     )
     videos_mb = [
         (nom, (info["Durée"], int(round(info["Taille"] * 1000))))
