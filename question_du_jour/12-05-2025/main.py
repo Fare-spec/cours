@@ -7,7 +7,7 @@ def force_brute(liste, i, j):
 
 
 def somme_max(liste):
-    max_actuel =  max_total = liste[0]
+    max_actuel = max_total = liste[0]
     for x in liste[1:]:
         max_actuel = max(x, max_actuel + x)
         max_total = max(max_total, max_actuel)

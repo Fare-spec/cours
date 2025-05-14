@@ -100,7 +100,7 @@ def sac_a_dos_glouton(videos, capacite, cle):
     return sélection, totale_duree, totale_taille
 
 
-'''def sac_a_dos_dynamique(videos, capacite):
+"""def sac_a_dos_dynamique(videos, capacite):
     precision = 100
     capacite = int(capacite * precision)
     liste = list(videos.items())
@@ -122,22 +122,30 @@ def sac_a_dos_glouton(videos, capacite, cle):
             nom, info = liste[i - 1]
             selection.append(nom)
             cap -= int(info["taille"] * precision)
-    return selection[::-1]'''
+    return selection[::-1]"""
 
 
-def sac_a_dos_dynamique(videos, capacite):
-    dp = [(0, []) for _ in range(capacite + 1)]
-    for nom, info in videos.items():
-        duree = info['Durée']
-        taille = info['taille']
-        for c in range(capacite, taille - 1, -1):
-            prev_duree, prev_sel = dp[c - taille]
-            if prev_duree + duree > dp[c][0]:
-                dp[c] = (prev_duree + duree, prev_sel + [nom])
-    return dp[capacite][1]
+def sac_a_dos_dyn(videos, cap):
+    videos = [(d, int(t * 100)) for (d, t) in videos]
+    capacite = int(cap * 100)
+    n = len(videos)
+    dp = [[0 for _ in range(capacite + 1)] for _ in range(n + 1)]
+    for k in range(1, n + 1):
+        duree_k, taille_k = videos[k - 1]
+        for w in range(capacite + 1):
+            if taille_k > w:
+                dp[k][w] = dp[k - 1][w]
+            else:
+                dp[k][w] = max(dp[k - 1][w], duree_k + dp[k - 1][w - taille_k])
 
+    w = capacite
+    choix = []
+    for k in range(n, 0, -1):
+        if dp[k][w] != dp[k - 1][w]:
+            choix.append(k - 1)
+            w -= videos[k - 1][1]
 
-
+    return dp[n][capacite], list(reversed(choix))
 
 
 if __name__ == "__main__":
