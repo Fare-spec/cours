@@ -1,6 +1,5 @@
-from mailbox import linesep
-
 import board as bd
+import drawer as dw
 
 
 def creerGrille(N, M, v=0):
@@ -29,6 +28,12 @@ def afficheJeu(positionsMines, casesDevoilees):
 
 def getCoords(known_grid, N, M):
     return bd.get_coords(known_grid)
+
+
+def main2():
+    grid = creerGrille(8, 8)
+    placerMine(grid, 10)
+    dw.draw_board(grid)
 
 
 def main() -> None:
@@ -64,4 +69,4 @@ def main() -> None:
                 known_grid[coord[1]][coord[0]] = True
 
 
-main()
+main2()
